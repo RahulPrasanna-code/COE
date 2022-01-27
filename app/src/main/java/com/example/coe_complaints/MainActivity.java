@@ -48,6 +48,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
+            case R.id.navHome:
+                // Add your navigational page code
+                break;
+            case R.id.navAnnouncements:
+                // Add your navigational page code
+                break;
+            case R.id.navTimeTable:
+                // Add your navigational page code
+                break;
+            case R.id.navResult:
+                // Add your navigational page code
+                break;
             case R.id.navComplaints:
                 startActivity(new Intent(MainActivity.this,Complaints.class));
                 break;

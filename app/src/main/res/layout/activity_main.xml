@@ -53,10 +53,10 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
+        android:theme="@style/ThemeOverlay.AppCompat.navTheme"
         app:headerLayout="@layout/navigation_header"
         app:itemBackground="@drawable/navigation_item_style"
         app:itemVerticalPadding="15dp"
-
         app:itemTextAppearance="@style/NavigationDrawerStyle"
         app:menu="@menu/drawer_layout" />
 </androidx.drawerlayout.widget.DrawerLayout>

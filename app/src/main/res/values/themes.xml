@@ -20,6 +20,16 @@
         <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
+    <style name="ThemeOverlay.AppCompat.navTheme">
+
+        <!-- Color of text and icon when SELECTED -->
+        <item name="colorPrimary">@color/black</item>
+
+        <!-- Background color when SELECTED -->
+        <item name="colorControlHighlight">@color/red</item>
+
+    </style>
+
     <style name="NavigationDrawerStyle">
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">@font/montserrat</item>

@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.COE_Complaints" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryVariant">@color/red</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -31,21 +31,26 @@
     </style>
 
     <style name="NavigationDrawerStyle">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:fontFamily">@font/montserrat</item>
     </style>
 
     <style name="ToolbarTheme.Text">
         <item name="android:fontFamily">@font/montserrat</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="BlackDrawerIconStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="spinBars">true</item>
         <item name="color">@android:color/black</item>
-        <item name="barLength">28dp</item>
-        <item name="gapBetweenBars">6dp</item>
+        <item name="barLength">24dp</item>
+        <item name="gapBetweenBars">4dp</item>
         <item name="thickness">3dp</item>
 
+    </style>
+
+    <style name="inputTextLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="strokeColor">@color/black</item>
     </style>
 </resources>

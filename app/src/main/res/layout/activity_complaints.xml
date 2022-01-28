@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Complaints">
+    tools:context=".ComplaintsActivity">
 
 
     <ImageView
@@ -16,10 +16,12 @@
         app:srcCompat="@drawable/ic_back_button" />
 
     <TextView
+        android:fontFamily="@font/montserrat"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:text="@string/complaints"
-        android:textSize="25sp"
+        android:textSize="22sp"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_toRightOf="@id/btnPrevious"
         android:layout_marginTop="7dp"
@@ -28,7 +30,7 @@
 
     <RelativeLayout
         android:id="@+id/btnFilter"
-        android:layout_width="121dp"
+        android:layout_width="100dp"
         android:layout_height="41dp"
         android:layout_below="@id/btnPrevious"
         android:layout_alignParentEnd="true"
@@ -37,11 +39,12 @@
         <ImageView
             android:layout_centerVertical="true"
             android:id="@+id/icFilter"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:src="@drawable/ic_filter" />
 
         <TextView
+            android:fontFamily="@font/montserrat"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/icFilter"
             android:layout_gravity="center"
@@ -50,9 +53,31 @@
             android:layout_height="wrap_content"
             android:text="@string/filter"
             android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:textSize="16sp"/>
 
 
     </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recViewComplaints"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnFilter"
+        android:layout_centerHorizontal="true"
+        android:padding="15dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnRaiseTicket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/red"
+        app:borderWidth="0dp"
+        app:srcCompat="@drawable/ic_plus" />
 
 </RelativeLayout>

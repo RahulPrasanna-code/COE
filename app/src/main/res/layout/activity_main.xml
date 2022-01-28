@@ -32,9 +32,10 @@
 
             <ImageView
                 android:layout_gravity="end"
+                android:foregroundGravity="center"
                 android:id="@+id/btnProfile"
-                android:layout_width="49dp"
-                android:layout_height="52dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="20dp"

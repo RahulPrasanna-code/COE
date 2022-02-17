@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pendingComplaintsCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="5dp"
-    app:cardCornerRadius="10dp"
-    app:strokeColor="@color/black"
-    app:strokeWidth="1dp"
-    android:id="@+id/complaintCard"
     android:layout_marginTop="10dp"
-    >
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp"
+    app:strokeColor="@color/black"
+    app:strokeWidth="1dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,59 +16,58 @@
         android:padding="15dp">
 
         <TextView
-            android:fontFamily="@font/montserrat"
-            android:layout_marginTop="10dp"
             android:id="@+id/txtIssueName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat"
             android:text="Name of The Issue"
-            android:textSize="17sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="17sp" />
 
         <TextView
-            android:fontFamily="@font/montserrat"
-            android:id="@+id/txtRaisedOn"
+            android:id="@+id/txtRaisedBy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtIssueName"
             android:layout_marginTop="20dp"
-            android:text="Raised On:" />
-
-        <TextView
             android:fontFamily="@font/montserrat"
-            android:id="@+id/txtRaisedOnDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="12/12/22"
-            android:layout_toRightOf="@id/txtRaisedOn"
-            android:layout_below="@id/txtIssueName"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="5dp"
-            android:textColor="@color/black"
-            />
+            android:text="Raised By:" />
 
         <TextView
-            android:id="@+id/txtStatus"
+            android:id="@+id/txtRaisedByValue"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtIssueName"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/txtRaisedBy"
+            android:fontFamily="@font/montserrat"
+            android:text="username"
+            android:textColor="@color/black" />
+
+        <TextView
+
+            android:id="@+id/txtRaisedOn"
+            android:layout_toLeftOf="@id/txtRaisedOnDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtIssueName"
             android:layout_marginTop="20dp"
             android:layout_marginRight="5dp"
-            android:layout_toLeftOf="@id/txtStatusValue"
             android:fontFamily="@font/montserrat"
-            android:text="Status:" />
+            android:text="Raised On:" />
 
         <TextView
-            android:id="@+id/txtStatusValue"
-            android:layout_width="100dp"
+            android:id="@+id/txtRaisedOnDate"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtIssueName"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/montserrat"
-            android:text="Pending"
+            android:text="12/12/22"
             android:textColor="@color/black" />
-
 
 
     </RelativeLayout>

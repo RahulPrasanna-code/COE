@@ -133,7 +133,7 @@
             android:backgroundTint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtCompalintDescription"
+                android:id="@+id/txtComplaintDescription"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:fontFamily="@font/montserrat"
@@ -148,6 +148,7 @@
     </RelativeLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRaiseComplaint"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"

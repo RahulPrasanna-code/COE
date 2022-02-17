@@ -16,8 +16,11 @@ import com.google.android.material.card.MaterialCardView;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import io.realm.RealmList;
+import io.realm.RealmResults;
+
 public class ComplaintsRecAdapter extends RecyclerView.Adapter<ComplaintsRecAdapter.ViewHolder> {
-    private ArrayList<Complaint> complaints = new ArrayList<>();
+    private RealmResults<Complaint> complaints;
 
     private Context context;
 
@@ -44,7 +47,7 @@ public class ComplaintsRecAdapter extends RecyclerView.Adapter<ComplaintsRecAdap
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,ComplaintDetailsActivity.class);
-                intent.putExtra("complaint", (Serializable) complaints.get(pos));
+                intent.putExtra("complaint_id",complaints.get(pos).getId());
                 context.startActivity(new Intent(intent));
             }
         });
@@ -55,7 +58,7 @@ public class ComplaintsRecAdapter extends RecyclerView.Adapter<ComplaintsRecAdap
         return complaints.size();
     }
 
-    public void setComplaints(ArrayList<Complaint> complaints) {
+    public void setComplaints(RealmResults<Complaint> complaints) {
         this.complaints = complaints;
         notifyDataSetChanged();
     }

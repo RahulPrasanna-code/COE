@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.coe_complaints" >
+    package="com.example.coe_complaints">
 
     <application
+        android:name=".COEApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.COE_Complaints" >
+        android:theme="@style/Theme.COE_Complaints">
+        <activity
+            android:name=".AddressedComplaintActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PendingComplaintDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PendingComplaintsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ComplaintsDashboardAdmin"
+            android:exported="false" />
         <activity
             android:name=".RaiseComplaintActivity"
             android:exported="false" />
@@ -20,7 +33,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

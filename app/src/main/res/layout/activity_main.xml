@@ -40,7 +40,16 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="20dp"
                 app:srcCompat="@drawable/profile_icon" />
+
         </androidx.appcompat.widget.Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/examsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/topBar"
+            android:layout_marginTop="10dp"
+            android:padding="20dp"/>
 
     </RelativeLayout>
     <com.google.android.material.navigation.NavigationView

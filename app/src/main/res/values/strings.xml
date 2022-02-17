@@ -22,6 +22,14 @@
         Please take a loot at this issue as soon as possible
     </string>
     <string name="raisecomplaint">Raise Complaint</string>
+    <string name="total_complaints">Total \n Complaints</string>
+    <string name="pending_complaints">Pending\nComplaints</string>
+    <string name="address_rating">Addressing\nrate</string>
+    <string name="addressed_complaints">Addressed\nComplaints</string>
+    <string name="pending_complaints_nb">Pending Complaints</string>
+    <string name="address_complaint">Address Complaint</string>
+    <string name="move_to_addressed">Move to Addressed</string>
+    <string name="addressed_complaints_db">Addressed Complaints</string>
 
     <string-array name="complaint_types">
         <item>Complaint type1</item>

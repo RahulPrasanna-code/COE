@@ -7,6 +7,7 @@
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/drawable/complains_desc_box_style.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/drawable/drop_down_box_style.xml" value="0.18697916666666667" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/drawable/ic_back_button.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/drawable/ic_baseline_done_outline_24.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/drawable/ic_filter.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/drawable/ic_navigation_bar.xml" value="0.19166666666666668" />
@@ -17,14 +18,23 @@
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/drawable/nav_item_style.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/drawable/nav_item_text_style.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/drawable/navigation_item_style.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/drawable/outline_update_24.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/activity_addressed_complaint.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/activity_complaint_details.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/activity_complaints.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/activity_complaints_dashboard_admin.xml" value="0.22" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/activity_pending_complaint_details.xml" value="0.16145833333333334" />
+        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/activity_pending_complaints.xml" value="0.22" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/activity_raise_complaint.xml" value="0.22" />
+        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/addressed_complaints_item.xml" value="0.22" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/complaint_type_item.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/complaints_item.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/complaints_item.xml" value="0.22" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/content_main.xml" value="0.10099637681159421" />
+        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/exam_item_row.xml" value="0.17481884057971014" />
+        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/item_loading.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/navigation_header.xml" value="0.22" />
+        <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/layout/pending_complaints_item.xml" value="0.5" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/menu/activity_main_drawer.xml" value="0.6" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/menu/drawer_layout.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Rahul/AndroidStudioProjects/COE_Complaints/app/src/main/res/menu/main_activity2.xml" value="0.13333333333333333" />

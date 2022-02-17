@@ -2,18 +2,63 @@ package com.example.coe_complaints;
 
 import java.io.Serializable;
 
-public class Complaint implements Serializable {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
+public class Complaint extends RealmObject implements Serializable {
+
+    @PrimaryKey()
+    private long id;
+    private String raisedBy;
     private String issueName;
     private String raisedOnDate;
     private String status;
     private String issueDetails;
+    private String addressedBy;
+    private String addressedOnDate;
 
-    public Complaint(String issueName, String issueDetails, String raisedOnDate, String status) {
+    public Complaint() {
+    }
+
+    public Complaint(long id,String raisedBy, String issueName, String issueDetails, String raisedOnDate, String status) {
+        this.id+=id;
+        this.raisedBy = raisedBy;
         this.issueName = issueName;
         this.raisedOnDate = raisedOnDate;
         this.status = status;
         this.issueDetails = issueDetails;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getAddressedBy() {
+        return addressedBy;
+    }
+
+    public void setAddressedBy(String addressedBy) {
+        this.addressedBy = addressedBy;
+    }
+
+    public String getAddressedOnDate() {
+        return addressedOnDate;
+    }
+
+    public void setAddressedOnDate(String addressedOnDate) {
+        this.addressedOnDate = addressedOnDate;
+    }
+
+    public String getRaisedBy() {
+        return raisedBy;
+    }
+
+    public void setRaisedBy(String raisedBy) {
+        this.raisedBy = raisedBy;
     }
 
     public String getIssueDetails() {
@@ -56,5 +101,26 @@ public class Complaint implements Serializable {
                 ", status='" + status + '\'' +
                 ", issueDetails='" + issueDetails + '\'' +
                 '}';
+    }
+
+    public boolean isPending()
+    {
+        if(status.toLowerCase().equals("pending"))
+            return true;
+        else
+            return false;
+    }
+
+    public boolean isAddressed()
+    {
+        if (status.toLowerCase().equals("done"))
+            return true;
+        else
+            return false;
+    }
+
+    public void address()
+    {
+
     }
 }

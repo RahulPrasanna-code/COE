@@ -1,5 +1,10 @@
 package com.example.coe_complaints;
 
+import static com.example.coe_complaints.MainActivity.app;
+import static com.mongodb.MongoClientSettings.getDefaultCodecRegistry;
+import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
+import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +17,20 @@ import android.widget.ImageView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmList;
+import io.realm.RealmResults;
+import io.realm.mongodb.User;
+import io.realm.mongodb.mongo.MongoClient;
+import io.realm.mongodb.mongo.MongoCollection;
+import io.realm.mongodb.mongo.MongoDatabase;
+
+
+import org.bson.codecs.configuration.CodecProvider;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.bson.codecs.pojo.PojoCodecProvider;
+
 import java.util.ArrayList;
 
 public class ComplaintsActivity extends AppCompatActivity {
@@ -20,26 +39,32 @@ public class ComplaintsActivity extends AppCompatActivity {
     private RecyclerView complaintsRecView;
     private ImageView btnBack;
 
+    private User user;
+    private MongoDatabase database;
+    private MongoCollection<Complaint> collection;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints);
 
+        Realm backgroundThreadRealm = Realm.getDefaultInstance();
+
         complaintsRecView = findViewById(R.id.recViewComplaints);
         btnBack =  findViewById(R.id.btnPrevious);
         btnAdd = findViewById(R.id.btnRaiseTicket);
 
-        ArrayList<Complaint> complaints = new ArrayList<>();
+        RealmResults<Complaint> complaints = backgroundThreadRealm.where(Complaint.class).findAllAsync();
 
-        complaints.add(new Complaint("Complaint 1","This is Complaint 1 description","11/12/22","pending"));
-        complaints.add(new Complaint("Complaint 2","This is Complaint 2 description","12/12/22","done"));
-        complaints.add(new Complaint("Complaint 3","This is Complaint 3 description","13/12/22","done"));
-        complaints.add(new Complaint("Complaint 4","This is Complaint 4 description","15/12/22","pending"));
-        complaints.add(new Complaint("Complaint 5","This is Complaint 5 description","17/12/22","pending"));
-        complaints.add(new Complaint("Complaint 6","This is Complaint 6 description","19/12/22","pending"));
 
         ComplaintsRecAdapter adapter = new ComplaintsRecAdapter(this);
-        adapter.setComplaints(complaints);
+
+        complaints.addChangeListener(new RealmChangeListener<RealmResults<Complaint>>() {
+            @Override
+            public void onChange(RealmResults<Complaint> complaints) {
+                adapter.setComplaints(complaints);
+            }
+        });
 
         complaintsRecView.setAdapter(adapter);
         complaintsRecView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));

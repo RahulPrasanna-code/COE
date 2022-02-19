@@ -16,6 +16,8 @@ import com.google.android.material.card.MaterialCardView;
 
 import java.util.List;
 
+import io.realm.RealmResults;
+
 public class ExamsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
 
 
@@ -25,7 +27,7 @@ public class ExamsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private boolean isLoading;
     private Activity activity;
-    private List<Exam> exams;
+    private RealmResults<Exam> exams;
     private int visibleThreshold = 5;
     private int lastVisibleItem, totalItemCount;
 
@@ -57,7 +59,7 @@ public class ExamsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         this.onLoadMoreListener = mOnLoadMoreListener;
     }
 
-    public ExamsAdapter(RecyclerView recyclerView, List<Exam> exams, Activity activity) {
+    public ExamsAdapter(RecyclerView recyclerView, RealmResults<Exam> exams, Activity activity) {
 
         this.exams = exams;
         this.activity = activity;
@@ -123,6 +125,11 @@ public class ExamsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             LoadingViewHolder loadingViewHolder = (LoadingViewHolder) holder;
             loadingViewHolder.progressBar.setIndeterminate(true);
         }
+    }
+
+    public void setExams(RealmResults<Exam> exams) {
+        this.exams = exams;
+        notifyDataSetChanged();
     }
 
     @Override

@@ -51,6 +51,18 @@
             android:layout_marginTop="10dp"
             android:padding="20dp"/>
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnAddExam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/red"
+            app:borderWidth="0dp"
+            app:srcCompat="@drawable/ic_plus" />
+
     </RelativeLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"

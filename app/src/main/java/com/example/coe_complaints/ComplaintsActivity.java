@@ -1,6 +1,6 @@
 package com.example.coe_complaints;
 
-import static com.example.coe_complaints.MainActivity.app;
+import static com.example.coe_complaints.COEApplication.app;
 import static com.mongodb.MongoClientSettings.getDefaultCodecRegistry;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
@@ -25,6 +25,7 @@ import io.realm.mongodb.User;
 import io.realm.mongodb.mongo.MongoClient;
 import io.realm.mongodb.mongo.MongoCollection;
 import io.realm.mongodb.mongo.MongoDatabase;
+import io.realm.mongodb.sync.SyncConfiguration;
 
 
 import org.bson.codecs.configuration.CodecProvider;
@@ -47,6 +48,10 @@ public class ComplaintsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaints);
+
+        String partitionValue = "My Project";
+
+        user=app.currentUser();
 
         Realm backgroundThreadRealm = Realm.getDefaultInstance();
 

@@ -11,7 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COE_Complaints">
         <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddressedComplaintActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateExamActivity"
             android:exported="false" />
         <activity
             android:name=".PendingComplaintDetailsActivity"

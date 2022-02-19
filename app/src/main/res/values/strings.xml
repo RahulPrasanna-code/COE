@@ -30,6 +30,14 @@
     <string name="address_complaint">Address Complaint</string>
     <string name="move_to_addressed">Move to Addressed</string>
     <string name="addressed_complaints_db">Addressed Complaints</string>
+    <string name="total_exams">Total\nExams</string>
+    <string name="ongoing_exams">Ongoing\nExams</string>
+    <string name="completed_exams">Completed\nExams</string>
+    <string name="upcoming_exams">Upcoming\nExams</string>
+    <string name="completed_exams1">Completed Exams</string>
+    <string name="ongoing_exams1">Ongoing Exams</string>
+    <string name="exam">Exam</string>
+    <string name="create_exam">Create Exam</string>
 
     <string-array name="complaint_types">
         <item>Complaint type1</item>

@@ -1,6 +1,11 @@
 package com.example.coe_complaints;
 
-public class Exam {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
+public class Exam extends RealmObject {
+    @PrimaryKey
+    private int _id;
     private String examName;
     private String fee;
     private String examDate;
@@ -20,6 +25,14 @@ public class Exam {
         this.lastDateWithFine = lastDateWithFine;
         this.eligibility = eligibility;
         this.registered = registered;
+    }
+
+    public int getId() {
+        return _id;
+    }
+
+    public void setId(int id) {
+        this._id = id;
     }
 
     public String getExamName() {

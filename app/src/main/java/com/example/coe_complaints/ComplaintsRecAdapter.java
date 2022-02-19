@@ -47,8 +47,8 @@ public class ComplaintsRecAdapter extends RecyclerView.Adapter<ComplaintsRecAdap
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,ComplaintDetailsActivity.class);
-                intent.putExtra("complaint_id",complaints.get(pos).getId());
-                context.startActivity(new Intent(intent));
+                intent.putExtra("complaint_id",complaints.get(pos).get_id());
+                context.startActivity(intent);
             }
         });
     }

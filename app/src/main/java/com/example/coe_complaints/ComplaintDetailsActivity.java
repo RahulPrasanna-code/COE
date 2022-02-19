@@ -23,12 +23,12 @@ public class ComplaintDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complaint_details);
 
-        complaintId = getIntent().getLongExtra("complaint_id",0);
+        complaintId = getIntent().getIntExtra("complaint_id",4);
 
         Realm realm = Realm.getDefaultInstance();
 
         realm.executeTransaction(realmTransaction -> {
-            complaint = realmTransaction.where(Complaint.class).equalTo("id",complaintId).findFirst();
+            complaint = realmTransaction.where(Complaint.class).equalTo("_id",complaintId).findFirst();
         });
         txtIssueName = findViewById(R.id.txtIssueName);
         txtIssueDescription = findViewById(R.id.txtIssueDescription);

@@ -14,8 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-
-import static com.example.coe_complaints.MainActivity.app;
+import static com.example.coe_complaints.COEApplication.app;
 
 
 import org.bson.Document;
@@ -84,37 +83,32 @@ public class RaiseComplaintActivity extends AppCompatActivity {
 
                 if(user_name.length()==0 || complaint_name.length()==0)
                 {
-                    Toast.makeText(getApplicationContext(),"username and complaint name are neccessary",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"username and complaint name are necessary",Toast.LENGTH_LONG).show();
                 }
                 else
                 {
                     backgroundThreadRealm.executeTransaction(new Realm.Transaction() {
-                         @Override
-                         public void execute(Realm realm) {
-                             // increment index
-                             Number num = realm.where(Complaint.class).max("id");
-                             int nextID;
-                             if(num == null) {
-                                 nextID = 1;
-                             } else {
-                                 nextID = num.intValue() + 1;
-                             }
+                        @Override
+                        public void execute(Realm realm) {
+                            Number num = realm.where(Complaint.class).max("_id");
+                            int nextID;
+                            if(num == null) {
+                                nextID = 1;
+                            } else {
+                                nextID = num.intValue() + 1;
+                            }
 
-                             Complaint complaint = realm.createObject(Complaint.class,nextID);
+                            Complaint complaint = realm.createObject(Complaint.class,nextID);
 
-                             complaint.setRaisedBy(user_name);
-                             complaint.setIssueName(complaint_name);
-                             complaint.setIssueDetails(complaint_description);
-                             complaint.setRaisedOnDate("21/01/22");
-                             complaint.setStatus("pending");
+                            complaint.setRaisedBy(user_name);
+                            complaint.setIssueName(complaint_name);
+                            complaint.setIssueDetails(complaint_description);
+                            complaint.setRaisedOnDate("21/01/22");
+                            complaint.setStatus("pending");
 
-                             realm.insert(complaint);
-                         }
-
-
-
+                            realm.insert(complaint);
+                        }
                     });
-
 
 
 

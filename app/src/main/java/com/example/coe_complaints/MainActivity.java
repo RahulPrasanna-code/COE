@@ -13,16 +13,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
+import io.realm.OrderedRealmCollectionSnapshot;
 import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmResults;
 import io.realm.mongodb.App;
 import io.realm.mongodb.AppConfiguration;
 import io.realm.mongodb.Credentials;
@@ -30,17 +36,18 @@ import io.realm.mongodb.User;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static App app;
     private String email="prasannarahul22@gmail.com";
     private String password="rahul2002";
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    public static AtomicReference<User> user;
     Toolbar toolbar;
-    private ArrayList<Exam> exams;
+    private RealmResults<Exam> exams;
     private RecyclerView recyclerView;
+    private FloatingActionButton btnCreateExam;
 
     private ExamsAdapter contactAdapter;
+    private Realm backgroundThreadRealm;
+    public static boolean dataAdded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,40 +56,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         Realm.init(this);
-        String appID = "coe-0-enllr";
-        app = new App(new AppConfiguration.Builder(appID).build());
 
-        Credentials emailPasswordCredentials = Credentials.emailPassword(email, password);
+        backgroundThreadRealm = Realm.getDefaultInstance();
 
-        user = new AtomicReference<User>();
-        app.loginAsync(emailPasswordCredentials, it -> {
-                    if (it.isSuccess()) {
-                        Log.v("AUTH", "Successfully authenticated using an email and password.");
-                        user.set(app.currentUser());
-                        Toast.makeText(MainActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(MainActivity.this, it.getError().toString(), Toast.LENGTH_SHORT).show();
-                        Log.e("AUTH", it.getError().toString());
-                    }
-                });
 
         drawerLayout = findViewById(R.id.drawerview);
         navigationView = findViewById(R.id.navigation_view);
         toolbar = findViewById(R.id.topBar);
+        btnCreateExam = findViewById(R.id.btnAddExam);
 
-        exams = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.examsRecyclerView);
 
-        for (int i = 1; i < 10; i++) {
-            Exam exam = new Exam();
-            exam.setFee(feeGeneration());
-            exam.setExamName("Course" + i);
-            exam.setLastDate("12/12/2022");
-            if(i%3==0)
-                exam.setRegistered(true);
-            exams.add(exam);
-        }
+        addSampleData();
+        dataAdded=true;
 
+        exams = backgroundThreadRealm.where(Exam.class).findAll();
 
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -94,34 +82,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
         contactAdapter = new ExamsAdapter((androidx.recyclerview.widget.RecyclerView) recyclerView, exams, this);
         recyclerView.setAdapter(contactAdapter);
+        exams.addChangeListener(new RealmChangeListener<RealmResults<Exam>>() {
+            @Override
+            public void onChange(RealmResults<Exam> exams) {
+
+                contactAdapter.setExams(exams);
+            }
+        });
+
 
         contactAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore() {
                 if (exams.size() <= 20) {
-                    exams.add(null);
                     contactAdapter.notifyItemInserted(exams.size() - 1);
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            exams.remove(exams.size() - 1);
                             contactAdapter.notifyItemRemoved(exams.size());
 
                             //Generating more data
                             int index = exams.size();
                             int end = index + 10;
-                            for (int i = index+1; i < end; i++) {
-                                Exam exam = new Exam();
-                                exam.setFee(feeGeneration());
-                                exam.setExamName("Course" + i );
-                                exam.setLastDate("11/12/2022");
-                                if(i%5==0)
-                                    exam.setRegistered(true);
-                                exams.add(exam);
-                            }
-                            contactAdapter.notifyDataSetChanged();
                             contactAdapter.setLoaded();
                         }
                     }, 5000);
@@ -131,8 +117,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+
+        btnCreateExam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,CreateExamActivity.class));
+            }
+        });
+
     }
 
+    private void addSampleData() {
+
+        if(!dataAdded)
+        {
+            for (int i = 1; i < 30; i++) {
+
+                int finalI = i;
+                backgroundThreadRealm.executeTransaction(realm->{
+                    Number num = realm.where(Exam.class).max("_id");
+                    int nextID;
+                    if(num == null) {
+                        nextID = 1;
+                    } else {
+                        nextID = num.intValue() + 1;
+                    }
+                    Exam exam = realm.createObject(Exam.class,nextID);
+                    exam.setFee(feeGeneration());
+                    exam.setExamName("Course" + finalI);
+                    exam.setLastDate("12/12/2022");
+                    if(finalI %3==0)
+                        exam.setRegistered(true);
+                    realm.insert(exam);
+                });
+            }
+        }
+
+
+    }
 
 
     @Override
@@ -153,6 +175,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.navComplaints:
                 startActivity(new Intent(MainActivity.this, ComplaintsActivity.class));
                 break;
+            case R.id.navAdmin:
+                startActivity(new Intent(MainActivity.this,AdminActivity.class));
+                break;
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.google.android.filament.Material;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
 
 import io.realm.Realm;
 
@@ -57,7 +55,9 @@ public class CreateExamActivity extends AppCompatActivity {
 
                             Exam exam = realm.createObject(Exam.class,nextID);
 
-                            exam.setFee(txtExamFee.getText().toString());
+                            String fee_total = txtExamFee.getText().toString();
+
+                            exam.setExamFee(fee_total);
                             exam.setExamName(txtExamName.getText().toString());
                             exam.setExamDate(txtExamDate.getText().toString());
                             exam.setEligibility(txtEligibility.getText().toString());

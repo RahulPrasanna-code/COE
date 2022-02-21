@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COE_Complaints">
         <activity
+            android:name=".ExamRegistrationForm"
+            android:exported="false" />
+        <activity
+            android:name=".ExamRegistrationActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdminActivity"
             android:exported="false" />
         <activity

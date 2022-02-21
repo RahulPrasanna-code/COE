@@ -1,20 +1,18 @@
 package com.example.coe_complaints;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
-
-import java.util.List;
 
 import io.realm.RealmResults;
 
@@ -104,7 +102,7 @@ public class ExamsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             Exam exam = exams.get(position);
             ExamViewHolder examViewHolder = (ExamViewHolder) holder;
             examViewHolder.course_name.setText(exam.getExamName());
-            examViewHolder.fees.setText(exam.getFee());
+            examViewHolder.fees.setText(exam.getExamFee());
             if(exam.isRegistered())
             {
                 examViewHolder.btnHallTicket.setVisibility(View.VISIBLE);
@@ -116,7 +114,10 @@ public class ExamsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             examViewHolder.cardExamination.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(activity.getApplicationContext(),"clicked "+exam.getExamName(),Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(activity.getApplicationContext(),ExamRegistrationActivity.class);
+                    intent.putExtra("id",exam.getId());
+
+                    activity.startActivity(intent);
                 }
             });
 

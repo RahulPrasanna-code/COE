@@ -7,7 +7,7 @@ public class Exam extends RealmObject {
     @PrimaryKey
     private int _id;
     private String examName;
-    private String fee;
+    private String examFee;
     private String examDate;
     private String lastDate;
     private String lastDateWithFine;
@@ -17,9 +17,9 @@ public class Exam extends RealmObject {
     public Exam() {
     }
 
-    public Exam(String examName, String fee, String examDate, String lastDate, String lastDateWithFine, String eligibility, boolean registered) {
+    public Exam(String examName, String examFee, String examDate, String lastDate, String lastDateWithFine, String eligibility, boolean registered) {
         this.examName = examName;
-        this.fee = fee;
+        this.examFee = examFee;
         this.examDate = examDate;
         this.lastDate = lastDate;
         this.lastDateWithFine = lastDateWithFine;
@@ -43,12 +43,12 @@ public class Exam extends RealmObject {
         this.examName = examName;
     }
 
-    public String getFee() {
-        return fee;
+    public String getExamFee() {
+        return examFee;
     }
 
-    public void setFee(String fee) {
-        this.fee = fee;
+    public void setExamFee(String examFee) {
+        this.examFee = examFee;
     }
 
     public String getExamDate() {

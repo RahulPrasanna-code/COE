@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -22,17 +20,9 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
-
-import io.realm.OrderedRealmCollectionSnapshot;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
-import io.realm.mongodb.App;
-import io.realm.mongodb.AppConfiguration;
-import io.realm.mongodb.Credentials;
-import io.realm.mongodb.User;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -143,9 +133,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         nextID = num.intValue() + 1;
                     }
                     Exam exam = realm.createObject(Exam.class,nextID);
-                    exam.setFee(feeGeneration());
+                    exam.setExamFee(feeGeneration());
+                    exam.setEligibility("2nd year");
                     exam.setExamName("Course" + finalI);
-                    exam.setLastDate("12/12/2022");
+                    exam.setExamDate("01/04/23");
+                    exam.setLastDate("12/12/22");
+                    exam.setLastDateWithFine("15/12/22");
                     if(finalI %3==0)
                         exam.setRegistered(true);
                     realm.insert(exam);

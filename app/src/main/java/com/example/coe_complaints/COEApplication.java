@@ -5,10 +5,13 @@ import android.app.Application;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.ObjectInputStream;
 import java.util.concurrent.atomic.AtomicReference;
 
+import io.realm.DynamicRealmObject;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmObjectSchema;
 import io.realm.exceptions.RealmMigrationNeededException;
 import io.realm.mongodb.App;
 import io.realm.mongodb.AppConfiguration;
@@ -20,7 +23,7 @@ public class COEApplication extends Application {
     public static App app;
     private String email="prasannarahul22@gmail.com";
     private String password="rahul2002";
-    final int METADATA_DB_SCHEMA_VERSION = 4;
+    final int METADATA_DB_SCHEMA_VERSION = 5;
     public static AtomicReference<User> user;
     private User appuser;
 
@@ -65,5 +68,6 @@ public class COEApplication extends Application {
         catch (RealmMigrationNeededException e) {
                 Realm.deleteRealm(config);
             }
+
     }
 }

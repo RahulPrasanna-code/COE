@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -48,22 +49,49 @@ public class ExamRegistrationActivity extends AppCompatActivity {
         txtLastDate.setText(exam.getLastDate());
         txtLastDateWithFine.setText(exam.getLastDateWithFine());
 
+        if(exam.isRegistered())
+        {
+            btnRegister.setText("Hall Ticket");
+            btnBack.setText("Withdraw");
+        }
+
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                finish();
+                btnBackFunction();
             }
         });
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ExamRegistrationForm.class);
-                intent.putExtra("id",examId);
-                startActivity(intent);
+                btnRegisterFunction();
             }
         });
+    }
+
+    private void btnBackFunction() {
+        if(exam.isRegistered())
+        {
+            Toast.makeText(getApplicationContext(),"withdraw exam",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+        finish();
+        return;
+    }
+
+    private void  btnRegisterFunction(){
+        if(exam.isRegistered())
+        {
+            Toast.makeText(getApplicationContext(),"Viewing Hall Ticket ",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(getApplicationContext(),ExamRegistrationForm.class);
+        intent.putExtra("id",examId);
+        startActivity(intent);
+        return;
+
     }
 }

@@ -39,6 +39,7 @@
     <string name="exam">Exam</string>
     <string name="create_exam">Create Exam</string>
     <string name="exam_registration">Exam Registration</string>
+    <string name="users">Users</string>
 
     <string-array name="complaint_types">
         <item>Complaint type1</item>

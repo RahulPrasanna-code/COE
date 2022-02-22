@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this, ComplaintsActivity.class));
                 break;
             case R.id.navAdmin:
-                startActivity(new Intent(MainActivity.this,AdminActivity.class));
+                startActivity(new Intent(MainActivity.this,UsersListActivity.class));
                 break;
 
         }

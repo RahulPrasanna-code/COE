@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 // Add your navigational page code
                 break;
             case R.id.navResult:
-                // Add your navigational page code
+                startActivity(new Intent(getApplicationContext(),ResultsActivity.class));
                 break;
             case R.id.navComplaints:
                 startActivity(new Intent(MainActivity.this, ComplaintsActivity.class));
